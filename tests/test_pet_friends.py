@@ -136,7 +136,7 @@ def test_add_new_pet_with_empty_name(name='', animal_type='dog', age='3', pet_ph
     status, result = pf.add_new_pet(auth_key, name, animal_type, age, pet_photo)
 
     assert status == 200
-    # assert result['name'] != '' Питомец создается с пустым значением в name
+    #  Питомец создается с пустым значением в name
 
 
 # 7. В параметрах name передаем большое значение при создании питомца (negative test)
@@ -148,7 +148,7 @@ def test_add_new_pet_with_big_name(
     status, result = pf.add_new_pet(auth_key, name, animal_type, age, pet_photo)
 
     assert status == 200
-    # assert len(name) < 20
+    # Питомец создан с большим количеством слов в имени
 
 
 # 8. Добавление питомца сo спец.символами вместо букв в name (negative test)
@@ -159,7 +159,7 @@ def test_add_new_pet_with_name_characters(name='!@#$%^&&*()_+=?/.,`', animal_typ
     status, result = pf.add_new_pet(auth_key, name, animal_type, age, pet_photo)
 
     assert status == 200
-    # assert name not in result['name']
+    # Питомец создан с именем состоящим из спец.символов
 
 
 # 9. В параметрах передадим отрицательный возраст при создании питомца (negative test)
@@ -169,8 +169,7 @@ def test_add_new_pet_negative_age(name='Richi', animal_type='немецкая о
     status, result = pf.add_new_pet(auth_key, name, animal_type, age, pet_photo)
 
     assert status == 200
-    # assert age not in result['age']
-    # assert int(age) < 0
+    # Питомец создан с отрицательным возрастом
 
 
 # 10. В параметрах передадим возраст больше 100 при создании питомца (negative test)
@@ -180,7 +179,7 @@ def test_add_new_pet_age_more(name='Richi', animal_type='немецкая овч
     status, result = pf.add_new_pet(auth_key, name, animal_type, age, pet_photo)
 
     assert status == 200
-    # assert int(age) < 100
+   #Питомец создан с возрастом 1000 лет
 
 
 # 11. В параметрах передадим возраст буквами при создании питомца (negative test)
@@ -189,7 +188,7 @@ def test_add_pet_new_fail_letter_age(name='Richard', animal_type='лабрадо
     status, result = pf.add_new_pet_inf_without_photo(auth_key, name, animal_type, age)
 
     assert status == 200
-    #   assert age not in result['age'] # Питомец добавлен с возрастом "two" вместо 2
+   # Питомец добавлен с возрастом "two" вместо 2
 
 
 # 12. Удалить чужого питомца (negative test)
@@ -205,7 +204,7 @@ def test_delete_another_pet():
 
     # Проверяем что статус ответа равен 200 и в списке питомцев нет id удалённого питомца
     assert status == 200
-    # assert pet_id not in all_pets.values() #Чужой питомец успешно удален
+    #Чужой питомец успешно удален
 
 
 # 13. В параметрах передадим пустые значения при создании питомца (negative test)
@@ -215,4 +214,4 @@ def test_add_pet_new_fail_lempty_value(name='', animal_type='', age=''):
     status, result = pf.add_new_pet_inf_without_photo(auth_key, name, animal_type, age)
 
     assert status == 200
-    # assert name not in result['name']  # Питомец добавлен с пустыми значениями
+     # Питомец добавлен с пустыми значениями
